@@ -214,9 +214,12 @@ function App() {
   
   const renderButton = () => {
     return (
-      <button  onClick={connectWallet} className='connect-btn'>
-        Connect
-      </button>
+      <div className='connect-container'>
+        <button  onClick={connectWallet} className='connect-btn'>
+          Connect
+        </button>
+      </div>
+      
     )
   }
 
@@ -224,45 +227,47 @@ function App() {
     
     if (network !== 'Polygon Mumbai Testnet') {
       return (
-        <div className="connect-wallet-container">
-          <h2>Please switch to Polygon Mumbai Testnet</h2>
-          <button className='cta-button mint-button' onClick={switchNetwork}>Click here to switch</button>
+        <div className="switch-network call-to-action">
+          <h4 style={{textAlign: 'center'}}>Please switch to Polygon Mumbai Testnet</h4>
+          <button type='submit' className='cta-button mint-button' onClick={switchNetwork}>Click here to switch</button>
         </div>
       );
     }
 
     return(
       <div className="form-container">
-        <div className="first-row">
-          <input
-            type="text"
-            value={domain}
-            placeholder='domain'
-            onChange={e => setDomain(e.target.value)}
-          />
-          <p className='tld'> {tld} </p>
-        </div>
-
+        
+        <div className='forms'>
         <input
           type="text"
+          value={domain}
+          placeholder='domain'
+          onChange={e => setDomain(e.target.value)}
+        />
+        <p className='tld'> {tld} </p>
+        
+        <input
+          type='text'
           value={record}
           placeholder='Website, Greeting, Song etc...'
           onChange={e => setRecord(e.target.value)}
         />
+
           {editing ? (
-            <div className="button-container">
-              <button className='cta-button mint-button' disabled={loading} onClick={updateDomain}>
+            <div className=''>
+              <button className='' disabled={loading} onClick={updateDomain}>
                 Set record
               </button>  
-              <button className='cta-button mint-button' onClick={() => {setEditing(false)}}>
+              <button className='' onClick={() => {setEditing(false)}}>
                 Cancel
               </button>  
             </div>
           ) : (
-            <button className='cta-button mint-button' disabled={loading} onClick={mint}>
+            <button type='submit' className='' disabled={loading} onClick={mint}>
               Mint
             </button>  
           )}
+        </div>
       </div>
     )
   }
@@ -270,12 +275,12 @@ function App() {
   const renderMints = () => {
     if (wallet && mints.length > 0) {
       return (
-        <div className="mint-container">
-          <p className="subtitle"> Recently minted domains!</p>
-          <div className="mint-list">
+        <div className="mint-box">
+          <p className=""> Recently minted domains!</p>
+          <div className="mint-collection">
             { mints.map((mint, index) => {
               return (
-                <div className="mint-item" key={index}>
+                <div className="mint-tab grid call-to-action" key={index}>
                   <div className='mint-row'>
                     <a className="link" href={`https://testnets.opensea.io/assets/mumbai/${contractAddress}/${mint.id}`} target="_blank" rel="noopener noreferrer">
                       <p className="underlined">{' '}{mint.name}{tld}{' '}</p>
@@ -288,8 +293,8 @@ function App() {
                       :
                       null
                     }
+                    <p> {mint.record} </p>
                   </div>
-            <p> {mint.record} </p>
           </div>)
           })}
         </div>
@@ -314,18 +319,25 @@ function App() {
   }, [wallet, network]);
 
   return (
-    <div className="App">
-      <header>
+    <div className="app">
+      
+      <div className=" flex network-info">
+        <img alt="Network logo" className="logo rotate" src={ network.includes("Polygon") ? polygonLogo : ethLogo} />
+        { wallet ? <p> Wallet ({wallet.slice(0, 6)}...{wallet.slice(-4)} )</p> : <p> (Not connected) </p> }
+      </div>
+      
+      <header className='headers' >
+      
         <h1>Roast Name Service</h1>
+        
         <h3>Bringing the Roast to the blockchain</h3>
-        <div className="right">
-          <img alt="Network logo" className="logo" src={ network.includes("Polygon") ? polygonLogo : ethLogo} />
-          { wallet ? <p> Wallet: {wallet.slice(0, 6)}...{wallet.slice(-4)} </p> : <p> Not connected </p> }
-        </div>
+        
+        {!wallet && renderButton()}
+      
       </header>
 
-      {!wallet && renderButton()}
       {wallet && renderInput()}
+
       {mints && renderMints()}
       
     </div>

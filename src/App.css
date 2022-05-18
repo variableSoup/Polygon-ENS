@@ -1,4 +1,153 @@
-.App {
+:root {
+  /* colors */
+  --clr-dark: 341, 0%, 14%;
+  --clr-light: 213, 0%, 28%;
+  --clr-white: 0 0% 100%;
+
+  /* font-sizes */
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
+  --fs-500: 1rem;
+  --fs-400: 0.9375rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  /* font-families */
+  --ff-serif: ;
+  --ff-serif-noto: ;
+  --ff-sans-normal: ;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+body {
+  background-color: hsl(var(--clr-light));
+  color: hsl(var(--clr-white));
+}
+
+input[type=text] {
+  padding: 1rem;
+  border-radius: 4rem;
+  background-color: hsl(var(--clr-dark) / .9);
+  color: white;
+}
+
+button[type=submit] {
+  margin-top: 1rem;
+  width: 6.5rem;
+  border-radius: 3rem;
+  padding: .7rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.call-to-action {
+  border: 2px solid lightgreen;
+}
+
+.headers {
   text-align: center;
 }
 
+.logo {
+  width: 1rem;
+  height: 1rem;
+}
+
+.network-info {
+  padding: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.switch-network {
+  margin-top: 40%;
+}
+
+.switch-network > button {
+  margin-left: 32%;
+  width: 9rem;
+}
+
+.connect-container {
+  width: 100%;
+  padding: 1rem;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.connect-btn {
+  border-radius: 3rem;
+  padding: 1.5rem;
+  margin: auto;
+  width: 60%;
+}
+
+.forms {
+  padding: 5rem;
+  text-align: center;
+}
+
+.mint-tab {
+  grid-template-areas: 
+    'mint-row mint-row'
+    'mint-row mint-row'
+    'mint-row mint-row';
+  
+  height: 29.5rem;
+  max-width: 98%;
+  border-radius: 1rem;
+  margin: auto;
+  justify-content: space-evenly;
+  overflow: scroll;
+}
+
+.mint-row {
+  height: 120px;
+  width: 150px;
+  background: var(--clr-white);
+  border-radius: 20px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  margin: 4px;
+}
