@@ -215,7 +215,7 @@ function App() {
   const renderButton = () => {
     return (
       <div className='connect-container'>
-        <button  onClick={connectWallet} className='connect-btn'>
+        <button onClick={connectWallet} className='connect-btn'>
           Connect
         </button>
       </div>
@@ -228,7 +228,7 @@ function App() {
     if (network !== 'Polygon Mumbai Testnet') {
       return (
         <div className="switch-network call-to-action">
-          <h4 style={{textAlign: 'center'}}>Please switch to Polygon Mumbai Testnet</h4>
+          <h4 style={{textAlign: 'center', marginBottom: '2rem' }}>Please switch to Polygon Mumbai Testnet</h4>
           <button type='submit' className='cta-button mint-button' onClick={switchNetwork}>Click here to switch</button>
         </div>
       );
@@ -238,14 +238,15 @@ function App() {
       <div className="form-container">
         
         <div className='forms'>
+        <label data-domain={tld}>
         <input
           type="text"
           value={domain}
-          placeholder='domain'
+          placeholder='Domain'
           onChange={e => setDomain(e.target.value)}
         />
-        <p className='tld'> {tld} </p>
-        
+        </label>
+
         <input
           type='text'
           value={record}
@@ -255,10 +256,10 @@ function App() {
 
           {editing ? (
             <div className=''>
-              <button className='' disabled={loading} onClick={updateDomain}>
+              <button className='' style={{marginBottom:'1rem'}} type='submit' disabled={loading} onClick={updateDomain}>
                 Set record
               </button>  
-              <button className='' onClick={() => {setEditing(false)}}>
+              <button className='' type='submit' onClick={() => {setEditing(false)}}>
                 Cancel
               </button>  
             </div>
@@ -276,19 +277,19 @@ function App() {
     if (wallet && mints.length > 0) {
       return (
         <div className="mint-box">
-          <p className=""> Recently minted domains!</p>
-          <div className="mint-collection">
+          <h3  style={{marginLeft: '3rem', marginBottom: '1rem'}} className=""> Recently minted domains!</h3>
+          <div className="mint-collection grid">
             { mints.map((mint, index) => {
               return (
-                <div className="mint-tab grid call-to-action" key={index}>
-                  <div className='mint-row'>
+                <div className="mint-tab " key={index}>
+                  <div className='mint-row '>
                     <a className="link" href={`https://testnets.opensea.io/assets/mumbai/${contractAddress}/${mint.id}`} target="_blank" rel="noopener noreferrer">
                       <p className="underlined">{' '}{mint.name}{tld}{' '}</p>
                     </a>
                     {/* If mint.owner is currentAccount, add an "edit" button*/}
                     { mint.owner.toLowerCase() === wallet.toLowerCase() ?
-                      <button className="edit-button" onClick={() => editRecord(mint.name)}>
-                        <img className="edit-icon" src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button" />
+                      <button style={{border: 'none', background: 'none'}} className="edit-button call-to-action " onClick={() => editRecord(mint.name)}>
+                        <img style={{width: '1rem'}} src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button" />
                       </button>
                       :
                       null
@@ -330,7 +331,7 @@ function App() {
       
         <h1>Roast Name Service</h1>
         
-        <h3>Bringing the Roast to the blockchain</h3>
+        <h4>Bringing the Roast to the blockchain !</h4>
         
         {!wallet && renderButton()}
       

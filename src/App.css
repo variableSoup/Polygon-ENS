@@ -1,6 +1,6 @@
 :root {
   /* colors */
-  --clr-dark: 341, 0%, 14%;
+  --clr-dark: 213, 0%, 0%;
   --clr-light: 213, 0%, 28%;
   --clr-white: 0 0% 100%;
 
@@ -40,22 +40,42 @@ picture {
 }
 
 body {
-  background-color: hsl(var(--clr-light));
+  background-color: hsl(325, 1%, 16%);
   color: hsl(var(--clr-white));
 }
 
 input[type=text] {
   padding: 1rem;
-  border-radius: 4rem;
-  background-color: hsl(var(--clr-dark) / .9);
+  border-radius: 1rem;
+  background-color: hsl(var(--clr-dark));
+  font-size: var(--fs-300);
   color: white;
 }
 
+label, input {
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+label::after {
+  content: attr(data-domain);
+  position: absolute;
+  top: .0rem;
+  left: 75%;
+  font-size: var(--fs-300);
+  color: white;
+  font-weight: bold;
+  
+}
+
 button[type=submit] {
-  margin-top: 1rem;
   width: 6.5rem;
+  margin-left: 4.1rem;
   border-radius: 3rem;
   padding: .7rem;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  color: hsl(var(--clr-white));
 }
 
 @keyframes rotation {
@@ -121,14 +141,16 @@ button[type=submit] {
   padding: 1.5rem;
   margin: auto;
   width: 60%;
+  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  color: hsl(var(--clr-white));
 }
 
 .forms {
   padding: 5rem;
-  text-align: center;
+  justify-content: center;
 }
 
-.mint-tab {
+.mint-collection {
   grid-template-areas: 
     'mint-row mint-row'
     'mint-row mint-row'
@@ -140,9 +162,11 @@ button[type=submit] {
   margin: auto;
   justify-content: space-evenly;
   overflow: scroll;
+  background-color: #9fa4c4;
+  background-image: linear-gradient(315deg, #9fa4c4 0%, #9e768f 74%);
 }
 
-.mint-row {
+.mint-tab {
   height: 120px;
   width: 150px;
   background: var(--clr-white);
@@ -150,4 +174,12 @@ button[type=submit] {
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
   padding: 1rem;
   margin: 4px;
+}
+
+.mint-row {
+  justify-content: center;
+}
+
+.edit-button {
+  border: none;
 }
