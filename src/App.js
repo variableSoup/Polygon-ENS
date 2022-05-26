@@ -227,9 +227,9 @@ function App() {
     
     if (network !== 'Polygon Mumbai Testnet') {
       return (
-        <div className="switch-network call-to-action">
+        <div className="switch-network " style={{justifyContent: 'center'}}>
           <h4 style={{textAlign: 'center', marginBottom: '2rem' }}>Please switch to Polygon Mumbai Testnet</h4>
-          <button type='submit' className='cta-button mint-button' onClick={switchNetwork}>Click here to switch</button>
+          <button type='submit' className='connect-btn' style={{}} onClick={switchNetwork}>Switch</button>
         </div>
       );
     }
@@ -250,7 +250,7 @@ function App() {
         <input
           type='text'
           value={record}
-          placeholder='Website, Greeting, Song etc...'
+          placeholder='Greeting, Link, etc...'
           onChange={e => setRecord(e.target.value)}
         />
 
@@ -264,7 +264,7 @@ function App() {
               </button>  
             </div>
           ) : (
-            <button type='submit' className='' disabled={loading} onClick={mint}>
+            <button type='submit' className='' style={{justifySelf: 'center'}} disabled={loading} onClick={mint}>
               Mint
             </button>  
           )}
@@ -277,7 +277,7 @@ function App() {
     if (wallet && mints.length > 0) {
       return (
         <div className="mint-box">
-          <h3  style={{marginLeft: '3rem', marginBottom: '1rem'}} className=""> Recently minted domains!</h3>
+          <h3  style={{marginLeft: '3rem', marginBottom: '1rem'}} className=""> Recently minted domains! 👇</h3>
           <div className="mint-collection grid">
             { mints.map((mint, index) => {
               return (
@@ -288,7 +288,7 @@ function App() {
                     </a>
                     {/* If mint.owner is currentAccount, add an "edit" button*/}
                     { mint.owner.toLowerCase() === wallet.toLowerCase() ?
-                      <button style={{border: 'none', background: 'none'}} className="edit-button call-to-action " onClick={() => editRecord(mint.name)}>
+                      <button style={{border: 'none', background: 'none'}} className="edit-button" onClick={() => editRecord(mint.name)}>
                         <img style={{width: '1rem'}} src="https://img.icons8.com/metro/26/000000/pencil.png" alt="Edit button" />
                       </button>
                       :
@@ -323,7 +323,7 @@ function App() {
     <div className="app">
       
       <div className=" flex network-info">
-        <img alt="Network logo" className="logo rotate" src={ network.includes("Polygon") ? polygonLogo : ethLogo} />
+        <img alt="Network logo" className="logo" src={ network.includes("Polygon") ? polygonLogo : ethLogo} />
         { wallet ? <p> Wallet ({wallet.slice(0, 6)}...{wallet.slice(-4)} )</p> : <p> (Not connected) </p> }
       </div>
       

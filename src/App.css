@@ -40,16 +40,25 @@ picture {
 }
 
 body {
-  background-color: hsl(325, 1%, 16%);
+  background: #821BF1;
+  background: -webkit-radial-gradient(top, #821BF1, #A271F4);
+  background: -moz-radial-gradient(top, #821BF1, #A271F4);
+  background: radial-gradient(to bottom, #821BF1, #A271F4);
   color: hsl(var(--clr-white));
 }
 
 input[type=text] {
   padding: 1rem;
-  border-radius: 1rem;
-  background-color: hsl(var(--clr-dark));
-  font-size: var(--fs-300);
+  border: none;
+  background: none;
+  border-bottom: .9px solid white;
+  font-size: var(--fs-600);
+  color: hsl(var(--clr-white));
+}
+
+::placeholder {
   color: white;
+  font-size: var(--fs-700);
 }
 
 label, input {
@@ -62,33 +71,28 @@ label::after {
   content: attr(data-domain);
   position: absolute;
   top: .0rem;
-  left: 75%;
-  font-size: var(--fs-300);
+  left: 10rem;
+  font-size: var(--fs-500);
   color: white;
   font-weight: bold;
   
 }
 
 button[type=submit] {
-  width: 6.5rem;
+  width: 7rem;
+  position: relative;
   margin-left: 4.1rem;
   border-radius: 3rem;
-  padding: .7rem;
-  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  border: none;
+  border-bottom: 1rem;
+  padding: 1rem;
+  background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
+  font-size: var(--fs-500);
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-.rotate {
-  animation: rotation 8s infinite linear;
+.call-to-action {
+  border: 2px solid lightgreen;
 }
 
 .flex {
@@ -101,14 +105,6 @@ button[type=submit] {
   gap: var(--gap, 1rem);
 }
 
-.call-to-action {
-  border: 2px solid lightgreen;
-}
-
-.headers {
-  text-align: center;
-}
-
 .logo {
   width: 1rem;
   height: 1rem;
@@ -118,6 +114,18 @@ button[type=submit] {
   padding: 1rem;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.network-info > p {
+  background-color: hsl(var(--clr-dark));
+  padding: .45rem;
+  border-radius: 1rem;
+  font-size: var(--fs-200);
+  margin-left: 6rem;
+}
+
+.headers {
+  text-align: center;
 }
 
 .switch-network {
@@ -138,11 +146,13 @@ button[type=submit] {
 
 .connect-btn {
   border-radius: 3rem;
-  padding: 1.5rem;
+  border: none;
+  padding: 1rem;
   margin: auto;
   width: 60%;
-  background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
+  background-color: hsl(var(--clr-dark));
   color: hsl(var(--clr-white));
+  font-size: var(--fs-600);
 }
 
 .forms {
@@ -157,29 +167,34 @@ button[type=submit] {
     'mint-row mint-row';
   
   height: 29.5rem;
-  max-width: 98%;
-  border-radius: 1rem;
+  border-left: 4px solid whitesmoke;
+  max-width: 95%;
   margin: auto;
   justify-content: space-evenly;
   overflow: scroll;
-  background-color: #9fa4c4;
-  background-image: linear-gradient(315deg, #9fa4c4 0%, #9e768f 74%);
+  background: none;
+  color: hsl(var(--clr-dark));
 }
 
 .mint-tab {
   height: 120px;
   width: 150px;
-  background: var(--clr-white);
+  background-color: hsl(var(--clr-dark));
+  color: whitesmoke;
   border-radius: 20px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 18px 0 rgba(0, 0, 0, 0.3),
+  inset -10px -10px 18px 0 rgba(0, 0, 0, 0.3),
+  inset 10px 10px 18px 0 rgba(255, 255, 255, 0.2);
   padding: 1rem;
   margin: 4px;
+  overflow: scroll;
 }
 
 .mint-row {
   justify-content: center;
 }
 
-.edit-button {
-  border: none;
+.edit-button > img{
+  border-radius: 50%;
+  background-color: white;
 }
