@@ -283,6 +283,7 @@ function App() {
               return (
                 <div className="mint-tab " key={index}>
                   <div className='mint-row '>
+                    <div className='flex'>
                     <a className="link" href={`https://testnets.opensea.io/assets/mumbai/${contractAddress}/${mint.id}`} target="_blank" rel="noopener noreferrer">
                       <p className="underlined">{' '}{mint.name}{tld}{' '}</p>
                     </a>
@@ -294,6 +295,7 @@ function App() {
                       :
                       null
                     }
+                    </div>
                     <p> {mint.record} </p>
                   </div>
           </div>)

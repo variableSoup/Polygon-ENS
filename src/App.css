@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monofett&display=swap');
+
 :root {
   /* colors */
   --clr-dark: 213, 0%, 0%;
@@ -126,6 +128,15 @@ button[type=submit] {
 
 .headers {
   text-align: center;
+  color: hsl(var(--clr-white));
+}
+
+.headers > h1 {
+  font-family: 'Monofett';
+  color: hsl(var(--clr-dark));
+  font-size: 50px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
 }
 
 .switch-network {
@@ -166,7 +177,7 @@ button[type=submit] {
     'mint-row mint-row'
     'mint-row mint-row';
   
-  height: 29.5rem;
+  height: 100%;
   border-left: 4px solid whitesmoke;
   max-width: 95%;
   margin: auto;
@@ -197,4 +208,11 @@ button[type=submit] {
 .edit-button > img{
   border-radius: 50%;
   background-color: white;
+  
+  left: 9.5rem;
+  bottom: 14.3rem;
+}
+
+.link {
+  font-weight: bolder;
 }
