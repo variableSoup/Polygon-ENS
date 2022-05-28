@@ -6,6 +6,7 @@ This project demonstrates the magic behind polygon and blockchain technologies. 
 
 * Automatic detection of metamask wallet
 * Automatic network switching if needed
+* Turns minted domain name to an NFT and uploads it to opensea (link provided)
 * Edit promotional records for the domains created
 * Displays minted domains along with promotional records
 
